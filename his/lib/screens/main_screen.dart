@@ -57,6 +57,22 @@ class MainScreen extends StatelessWidget {
                     offset: Offset(2, 2),
                   ),
                 )),
+                Expanded(
+                    child: CustomeButtom(
+                  function: 'SignIn',
+                  color: CustomeColor.MainScreenButtomColorFirst,
+                  text: Text('SignIn'),
+                  image: Image(
+                    image: AssetImage(
+                      'assets/icons/user.png',
+                    ),
+                  ),
+                  topMargin: 10,
+                  rightMargin: 8,
+                  buttonMargin: 20,
+                  offset: Offset(2, 2),
+                )), 
+
               ],
             ),
           ),

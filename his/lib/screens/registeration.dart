@@ -93,7 +93,23 @@ class _RegisterationState extends State<Registeration> {
                           hintText: 'Enter Your Address',
                           border: InputBorder.none),
                     ),
-                  ),CustomePaswwordEntry(),
+                    
+                  ),Container(
+                    width: 500,
+                    padding: EdgeInsets.only(left: 50),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.grey),
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      controller: controller[3],
+                      decoration: InputDecoration(
+                          hintText: 'Enter Your Email',
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  CustomePaswwordEntry(),
                   ElevatedButton(onPressed: () => null, child: Text("Submit"))
                 ],
               ),
