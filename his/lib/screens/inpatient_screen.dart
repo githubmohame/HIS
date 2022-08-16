@@ -39,9 +39,14 @@ class _InpatientState extends State<Inpatient> {
                     child: Text('Registeration InPatient',
                         style: TextStyle(fontSize: 30)),
                   ),
-                   CustomDropDownButtom(firstValue: 'tell me1',l: List.generate(100, (index) => DropdownMenuItem<String>(value: 'tell me${index}',child: Text('tell me$index'),)),),
-                   CustomDropDownButtom(firstValue: 'tell me1',l: List.generate(100, (index) => DropdownMenuItem<String>(value: 'tell me${index}',child: Text('tell me$index'),)),),
-
+                  Text('Specification',
+                        style: TextStyle(fontSize: 30)),
+                   CustomDropDownButtom(firstValue: 'tell me1',l: List.generate(100, (index) => DropdownMenuItem<String>(value: 'tell me${index}',child: Text('tell me$index',style: TextStyle(fontSize: 30)),)),),
+                   Text('Doctor Name',
+                        style: TextStyle(fontSize: 30)),
+                   CustomDropDownButtom(firstValue: 'tell me1',l: List.generate(100, (index) => DropdownMenuItem<String>(value: 'tell me${index}',child: Text('tell me$index',style: TextStyle(fontSize: 30)),)),),
+                    Text('Day you come',
+                        style: TextStyle(fontSize: 30)),
                    CustomDropDownButtom(firstValue: 'tell me',l: [DropdownMenuItem<String>(value: 'tell me',child: Text('tell me'),)
                    ,DropdownMenuItem<String>(value: 'tell me2',child: Text('tell me'),)
                    ,DropdownMenuItem<String>(value: 'tell me3',child: Text('tell me'),)
