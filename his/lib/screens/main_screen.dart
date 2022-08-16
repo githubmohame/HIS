@@ -131,7 +131,7 @@ class MainScreen extends StatelessWidget {
               children: [
                 Expanded(
                     child: CustomeButtom(
-                  function: '',
+                  function:  "InpatientScreen",
                   color: CustomeColor.MainScreenButtomColorFirst,
                   text: Text('Inpatient'),
                   image: Image(
@@ -145,7 +145,7 @@ class MainScreen extends StatelessWidget {
                 )),
                 Expanded(
                     child: CustomeButtom(
-                  function: '',
+                  function:"UploadImageMedical",
                   color: CustomeColor.silver,
                   text: Text('Radiology\n upload'),
                   image: Image(
