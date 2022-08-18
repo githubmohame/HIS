@@ -207,7 +207,7 @@ class MainScreen extends StatelessWidget {
                   topMargin: 8,
                   buttonMargin: 20,
                   offset: Offset(2, 2),
-                )),*/
+                )),*//*
                 Expanded(
                     child: CustomeButtom(
                   function: '',
@@ -222,7 +222,7 @@ class MainScreen extends StatelessWidget {
                   rightMargin: 5,
                   buttonMargin: 20,
                   offset: Offset(-2, 2),
-                )),
+                )),*/
               ],
             ),
           ),
