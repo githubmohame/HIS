@@ -10,10 +10,10 @@ import 'screens/inpatient_screen.dart';
 import 'screens/patient_info_screen.dart';
 
 void main() {
-  /*runApp(MaterialApp(debugShowCheckedModeBanner: false  ,
+   runApp(MaterialApp(debugShowCheckedModeBanner: false  ,
  initialRoute: '/',
     routes:<String, Widget Function(BuildContext)>{"/":(c)=>MainScreen(),'Registration':(p0) => Registeration(),
     'Patient':(p0) => PatientScreen()
-    ,'DoctorScreen':(p0) => DoctorScreen(),"SignIn":(p0) => SignIn(),"UploadImageMedical":(p0) => UploadImageMedical(),"InpatientScreen":(p0) => Inpatient()   } ,)) ;*/
-  runApp(MaterialApp(home: Inpatient()));
+    ,'DoctorScreen':(p0) => DoctorScreen(),"SignIn":(p0) => SignIn(),"UploadImageMedical":(p0) => UploadImageMedical(),"InpatientScreen":(p0) => Inpatient()   } ,)) ; 
+  //runApp(MaterialApp(home: Inpatient()));
 }
