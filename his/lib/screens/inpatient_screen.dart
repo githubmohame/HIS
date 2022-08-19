@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
 
 import '../Api/test_api.dart';
 import '../themes/colors.dart';
+import 'cubit/list_cubit_cubit.dart';
 
 class Inpatient extends StatefulWidget {
   Inpatient({Key? key}) : super(key: key) {}
@@ -44,109 +46,117 @@ class _InpatientState extends State<Inpatient> {
   @override
   Widget build(BuildContext context) {
     //print('hell');
-    return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Icon(Icons.arrow_back, color: Colors.black)),
-        backgroundColor: CustomeColor.silver,
-      ),
-      body: Container(
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.only(top: 50, bottom: 50),
-              width: 700,
-              height: 700,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      30,
+    return BlocProvider<ListCubitCubit>(
+      create: (context) => ListCubitCubit(l1: '', l2: '', l3: ''),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Icon(Icons.arrow_back, color: Colors.black)),
+          backgroundColor: CustomeColor.silver,
+        ),
+        body: Container(
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.only(top: 50, bottom: 50),
+                width: 700,
+                height: 700,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(
+                        30,
+                      ),
                     ),
-                  ),
-                  border: Border.all(width: 5, color: Colors.black)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Center(
-                    child: Text('Registeration InPatient',
-                        style: TextStyle(fontSize: 30)),
-                  ),
-                  Text('Specification', style: TextStyle(fontSize: 30)),
-                  FutureBuilder(
-                      future: fsm(),
-                      builder: ((context, snapshot) {
-                        List list125 =
-                            json.decode((snapshot.data as Response).body);
-                        List<DropdownMenuItem<String>> list123 =
-                            List<DropdownMenuItem<String>>.generate(
-                          list125.length,
-                          (index) {
-                            return DropdownMenuItem<String>(
+                    border: Border.all(width: 5, color: Colors.black)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(
+                      child: Text('Registeration InPatient',
+                          style: TextStyle(fontSize: 30)),
+                    ),
+                    Text('Specification', style: TextStyle(fontSize: 30)),
+                    FutureBuilder(
+                        future: fsm(),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            List list125 =
+                                json.decode((snapshot.data as Response).body);
+                            List<DropdownMenuItem<String>> list123 =
+                                List<DropdownMenuItem<String>>.generate(
+                                    list125.length, (index) {
+                              return DropdownMenuItem(
                                 value: list125[index]['id'].toString(),
-                                child: Text(list125[index]['body']));
-                          },
-                        );
-                        print(customDropDownButtom1.state.value);
-                        try {
-                          customDropDownButtom1 = CustomDropDownButtom(
-                              f: (s) => setState(() {
-                                    customDropDownButtom1.state.value = s;
-                                  }),
-                              firstValue: customDropDownButtom1.state.value,
-                              l: list123);
-                          //print(customDropDownButtom1.state.value);
-                          //print(list123[1].value);
-                        } catch (e) {
-                          print('error');
-                          customDropDownButtom1 = CustomDropDownButtom(
-                              f: (s) => setState(() {
-                                    //print('kkkk');
-                                  }),
-                              firstValue: list125[0]['id'].toString(),
-                              l: list123);
-                        }
-
-                        return customDropDownButtom1;
-                      })),
-                  Text('Doctor Name', style: TextStyle(fontSize: 30)),
-                  FutureBuilder(
-                      future: fsm2(),
-                      builder: ((context, snapshot) {
-                        List list125 = snapshot.data is Response
-                            ? json.decode((snapshot.data as Response).body)
-                            : [];
-                        //print(list125[0]['body']);
-                        List<DropdownMenuItem<String>> list123 = [];
-                        //print(customDropDownButtom1.state.value);
-                        for (int i = 0; i < list125.length; i++) {
-                          print(customDropDownButtom1.state.value ==list125[i]['postId'].toString()?list125[i]['postId']:null);
-                          customDropDownButtom1.state.value ==
-                                  list125[i]['postId'].toString()
-                              ? list123.add(DropdownMenuItem<String>(
-                                  value: list125[i]['id'].toString(),
-                                  child: Text(list125[i]['body'])))
-                              : null;
-                        }
-                        //print(list123);
-                        return customDropDownButtom2 = CustomDropDownButtom(
-                            f: (s) => null,
-                            firstValue: list125[0]['id'].toString(),
-                            l: list123);
-                      })),
-                  Text('Day you come', style: TextStyle(fontSize: 30)),
-                  customDropDownButtom3,
-                  Container(
-                      decoration: BoxDecoration(shape: BoxShape.rectangle),
-                      child: ElevatedButton(
-                          onPressed: () => null, child: Text("Submit")))
-                ],
+                                child: Text(list125[0]['body'].toString()),
+                              );
+                            });
+                            BlocProvider.of<ListCubitCubit>(context)
+                                .update1(l: list123[0].value.toString());
+                            return customDropDownButtom1 = CustomDropDownButtom(
+                              f: (value) =>
+                                  BlocProvider.of<ListCubitCubit>(context)
+                                      .update1(l: value),
+                              firstValue: list123[0].value.toString(),
+                              l: list123,
+                            );
+                          } else {
+                            return Container();
+                          }
+                        })),
+                    Text('Doctor Name', style: TextStyle(fontSize: 30)),
+                    FutureBuilder( 
+                        future: fsm2(),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            List list125 =
+                                json.decode((snapshot.data as Response).body);
+                            return BlocBuilder<ListCubitCubit, ListCubitState>(
+                              buildWhen: (previous, current) {
+                                return previous.dropdownChoice1 !=
+                                    current.dropdownChoice1;
+                              },
+                              builder: (context, state) {
+                                print(state.dropdownChoice1);
+                                List<DropdownMenuItem<String>> list123 = [];
+                                for (int i = 0; i < list125.length; i++) {
+                                  if (list125[i]['postId'].toString() ==
+                                      state.dropdownChoice1) {
+                                        print(list125[i]['postId'].toString());
+                                    list123.add(DropdownMenuItem(value: list125[i]['id'].toString(),
+                                        child: Text(list125[i]['body'])));
+                                  }
+                                }
+                                return customDropDownButtom1 =
+                                    CustomDropDownButtom(
+                                  f: (value) =>
+                                      BlocProvider.of<ListCubitCubit>(context)
+                                          .update2(l: value),
+                                  firstValue: list123[0].value.toString(),
+                                  l: list123,
+                                );
+                              },
+                            );
+                          } else {
+                            return Container();
+                          }
+                        })),
+                    Text('Day you come ${customDropDownButtom2.state.value}',
+                        style: TextStyle(fontSize: 30)),
+                    Container(
+                        decoration: BoxDecoration(shape: BoxShape.rectangle),
+                        child: ElevatedButton(
+                            onPressed: () => null, child: Text("Submit")))
+                  ],
+                ),
               ),
             ),
-          ),
-          decoration: BoxDecoration(
-              color: CustomeColor.MainScreenButtomColorFirst,
-              shape: BoxShape.rectangle)),
+            decoration: BoxDecoration(
+                color: CustomeColor.MainScreenButtomColorFirst,
+                shape: BoxShape.rectangle)),
+      ),
     );
   }
 }
@@ -200,3 +210,81 @@ class _CustomDropDownButtomState extends State<CustomDropDownButtom> {
           );
   }
 }
+
+
+
+
+
+/*
+                  FutureBuilder(
+                      future: fsm(),
+                      builder: ((context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          List list125 =
+                              json.decode((snapshot.data as Response).body);
+                          List<DropdownMenuItem<String>> list123 =
+                              List<DropdownMenuItem<String>>.generate(
+                            list125.length,
+                            (index) {
+                              return DropdownMenuItem<String>(
+                                  value: list125[index]['id'].toString(),
+                                  child: Text(list125[index]['body']));
+                            },
+                          );
+                          print(customDropDownButtom1.state.value);
+                          try {
+                            customDropDownButtom1 = CustomDropDownButtom(
+                                f: (s) => setState(() {
+                                      customDropDownButtom1.state.value = s;
+                                    }),
+                                firstValue: customDropDownButtom1.state.value,
+                                l: list123);
+                          } catch (e) {
+                            print('error');
+                            customDropDownButtom1 = CustomDropDownButtom(
+                                f: (s) => setState(() {
+                                      //print('kkkk');
+                                    }),
+                                firstValue: list123[0].value.toString(),
+                                l: list123);
+                          }
+
+                          return customDropDownButtom1;
+                        } else {
+                          return Container();
+                        }
+                      })),*/
+                      
+
+/*
+                  FutureBuilder(
+                      future: fsm2(),
+                      builder: ((context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          List list125 = snapshot.data is Response
+                              ? json.decode((snapshot.data as Response).body)
+                              : [];
+                          //print(list125[0]['body']);
+                          List<DropdownMenuItem<String>> list123 = [];
+                          //print(customDropDownButtom1.state.value);
+                          for (int i = 0; i < list125.length; i++) {
+                            print(list125[i]['id'].toString());
+                            //print(customDropDownButtom1.state.value == list125[i]['postId'].toString() ? list125[i]['postId'] : null);
+                            customDropDownButtom1.state.value ==
+                                    list125[i]['postId'].toString()
+                                ? list123.add(DropdownMenuItem<String>(
+                                    value: list125[i]['id'].toString(),
+                                    child: Text(list125[i]['body'])))
+                                : null;
+                          }
+                          //print(list123);
+                          return customDropDownButtom2 = CustomDropDownButtom(
+                              f: (s) => setState(() {
+                                    customDropDownButtom2.state.value = s;
+                                  }),
+                              firstValue: list123[0].value.toString(),
+                              l: list123);
+                        } else {
+                          return Container();
+                        }
+                      })),*/
