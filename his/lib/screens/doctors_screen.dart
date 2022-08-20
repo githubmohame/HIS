@@ -24,12 +24,12 @@ class _DoctorScreenState extends State<DoctorScreen> {
         body: ListView.builder(
           itemCount: 100,
           itemBuilder: (context, index) {
-            return GestureDetector(onTap:()=>Navigator.push( context,MaterialPageRoute(builder: (context) => DoctorInfoScreen(Email: '',Phone: '0998876544' ,FullName: 'oooooo',Specified: 'kkkkkkk',))),
+            return GestureDetector(onTap:()=>Navigator.push( context,MaterialPageRoute(builder: (context) => DoctorInfoScreen(Email: 'mohamed@gmail.com',Phone: '0998876544' ,FullName: 'oooooo',Specified: 'kkkkkkk',))),
               child: Container(
-                height: 200,
-                padding: EdgeInsets.only(top: 10, bottom: 10),
+                height: 100,
+                padding: EdgeInsets.only(top: 5, bottom: 5),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
+                    border: Border.all(color: Colors.grey, width:0),
                     color: CustomeColor.MainScreenButtomColorFirst),
                 child: Row(
                   children: [

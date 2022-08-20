@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:his/models/main_user_model.dart';
 import 'package:his/themes/colors.dart';
 import 'package:url_launcher/link.dart';
 
@@ -27,7 +28,7 @@ class MainScreen extends StatelessWidget {
                     child: CustomeButtom(
                   function: 'Registration',
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Registration'),
+                  text: Text('Registration',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/user.png',
@@ -45,7 +46,7 @@ class MainScreen extends StatelessWidget {
                   builder: (context, followLink) => CustomeButtom(
                     function: followLink,
                     color: CustomeColor.silver,
-                    text: Text('WebSite'),
+                    text: Text('WebSite',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                     image: Image(
                       image: AssetImage(
                         'assets/icons/web.png',
@@ -61,7 +62,7 @@ class MainScreen extends StatelessWidget {
                     child: CustomeButtom(
                   function: 'SignIn',
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('SignIn'),
+                  text: Text('SignIn',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/user.png',
@@ -81,23 +82,9 @@ class MainScreen extends StatelessWidget {
               children: [
                 Expanded(
                     child: CustomeButtom(
-                  function: 'Patient',
-                  color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Patient'),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/icons/patient.png',
-                    ),
-                  ),
-                  rightMargin: 8,
-                  buttonMargin: 20,
-                  offset: Offset(2, 2),
-                )),
-                Expanded(
-                    child: CustomeButtom(
                   function: 'DoctorScreen',
                   color: CustomeColor.silver,
-                  text: Text('Doctors'),
+                  text: Text('Doctors',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/man.png',
@@ -107,12 +94,12 @@ class MainScreen extends StatelessWidget {
                   topMargin: 8,
                   buttonMargin: 20,
                   offset: Offset(2, 2),
-                )),
+                )) ,
                 Expanded(
                     child: CustomeButtom(
                   function: '',
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Ptient\n Documents'),
+                  text: Text('Ptient\n Documents',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/medical-history.png',
@@ -133,12 +120,8 @@ class MainScreen extends StatelessWidget {
                     child: CustomeButtom(
                   function:  "InpatientScreen",
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Inpatient'),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/icons/kindpng_828434.png',
-                    ),
-                  ),
+                  text: Text('Take Time',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  image: Icon(Icons.punch_clock_sharp,size: 70),
                   rightMargin: 8,
                   buttonMargin: 20,
                   offset: Offset(2, 2),
@@ -147,7 +130,7 @@ class MainScreen extends StatelessWidget {
                     child: CustomeButtom(
                   function:"UploadImageMedical",
                   color: CustomeColor.silver,
-                  text: Text('Radiology\n upload'),
+                  text: Text('Radiology\n upload',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/upload.png',
@@ -176,14 +159,14 @@ class MainScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          MainUserModel.admin?Expanded(
             child: Row(
               children: [
                 Expanded(
                     child: CustomeButtom(
-                  function: '',
+                  function: "AdminMainScreen",
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Admin'),
+                  text: Text('Admin',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/userAdmin.png',
@@ -225,7 +208,7 @@ class MainScreen extends StatelessWidget {
                 )),*/
               ],
             ),
-          ),
+          ):Container(),
         ],
       )),
     );

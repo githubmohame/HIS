@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 
 Future<Response> fsm() async {
   var x = Uri.parse("https://jsonplaceholder.typicode.com/posts");
-  Response data = await http.get(x);
+  Response data = await http.get(x );
   return data;
 }
 

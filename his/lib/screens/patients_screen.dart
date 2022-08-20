@@ -27,16 +27,16 @@ class _PatientScreenState extends State<PatientScreen> {
           itemBuilder: (context, index) {
             return GestureDetector(onTap:()=>Navigator.push( context,MaterialPageRoute(builder: (context) =>  PatientInfoScreen(Phone: '0998876544',Adress: 'looo',FullName: 'oooooo',))),
               child: Container(
-                height: 200,
+                height: 150,
                 padding: EdgeInsets.only(top: 10, bottom: 10),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
+                    border: Border.all(color: Colors.black, width:1),
                     color: CustomeColor.MainScreenButtomColorFirst),
                 child: Row(
                   children: [
                     Stack(alignment: Alignment.center, children: [
-                      CircularProgressIndicator(),
-                      Container(width: 100,height:100,decoration: BoxDecoration(shape: BoxShape.circle,image:DecorationImage(image: NetworkImage(
+                      Container(width:10,height:10,child: CircularProgressIndicator(  )),
+                      Container(width: 300,height:300,decoration: BoxDecoration(shape: BoxShape.circle,image:DecorationImage(image: NetworkImage(
                           'https://i.pinimg.com/564x/99/7c/98/997c98690995eb77cb65cb88f39856b0.jpg'),fit: BoxFit.fill)),
                   ),
                     ]),
@@ -44,7 +44,7 @@ class _PatientScreenState extends State<PatientScreen> {
                       child: Text(maxLines: 5,
                           'Name:Mihamed Ahmed Ali Soliman',
                           style:
-                              TextStyle(overflow: TextOverflow.ellipsis, fontSize: 30)),
+                              TextStyle(overflow: TextOverflow.ellipsis, fontSize: 20)),
                     )
                   ],
                 ),

@@ -2,20 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:his/common_function/binary_search.dart';
 import 'package:http/http.dart';
 
 import '../Api/test_api.dart';
 import '../themes/colors.dart';
 import 'cubit/list_cubit_cubit.dart';
 
-class Inpatient extends StatefulWidget {
-  Inpatient({Key? key}) : super(key: key) {}
-  _InpatientState d = _InpatientState();
+class TakeRegister extends StatefulWidget {
+  TakeRegister({Key? key}) : super(key: key) {}
+  _TakeRegisterState d = _TakeRegisterState();
   @override
-  State<Inpatient> createState() {
-    _InpatientState f = d;
+  State<TakeRegister> createState() {
+    _TakeRegisterState f = d;
     print(f.customDropDownButtom1.state.value);
-    d = _InpatientState();
+    d = _TakeRegisterState();
     d.customDropDownButtom1 = f.customDropDownButtom1;
     //print(d.customDropDownButtom1.state.value);
     d.customDropDownButtom2 = f.customDropDownButtom2;
@@ -24,8 +25,8 @@ class Inpatient extends StatefulWidget {
   }
 }
 
-class _InpatientState extends State<Inpatient> {
-  _InpatientState() {}
+class _TakeRegisterState extends State<TakeRegister> {
+  _TakeRegisterState() {}
   CustomDropDownButtom customDropDownButtom1 = CustomDropDownButtom(
     f: () => null,
     firstValue: '',
@@ -55,10 +56,9 @@ class _InpatientState extends State<Inpatient> {
               child: Icon(Icons.arrow_back, color: Colors.black)),
           backgroundColor: CustomeColor.silver,
         ),
-        body: Container(
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.only(top: 50, bottom: 50),
+        body: Center(
+          child: Container(
+             padding: EdgeInsets.only(top: 50, bottom: 50),
                 width: 700,
                 height: 700,
                 decoration: BoxDecoration(
@@ -68,20 +68,20 @@ class _InpatientState extends State<Inpatient> {
                       ),
                     ),
                     border: Border.all(width: 5, color: Colors.black)),
+              child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Center(
-                      child: Text('Registeration InPatient',
-                          style: TextStyle(fontSize: 30)),
+                      child: Text('Take Time',
+                          style: TextStyle(fontSize: 20)),
                     ),
-                    Text('Specification', style: TextStyle(fontSize: 30)),
+                    Text('Specification', style: TextStyle(fontSize:20)),
                     FutureBuilder(
                         future: fsm(),
                         builder: ((context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
+                          if (snapshot.connectionState == ConnectionState.done&&snapshot.data is Response) {
                             List list125 =
                                 json.decode((snapshot.data as Response).body);
                             List<DropdownMenuItem<String>> list123 =
@@ -105,12 +105,13 @@ class _InpatientState extends State<Inpatient> {
                             return Container();
                           }
                         })),
-                    Text('Doctor Name', style: TextStyle(fontSize: 30)),
-                    FutureBuilder( 
+                    Text('Doctor Name', style: TextStyle(fontSize: 20)),
+                    FutureBuilder(
                         future: fsm2(),
                         builder: ((context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
+                          if (snapshot.connectionState == ConnectionState.done &&
+                              snapshot.error is String) {
+                            print(snapshot.error);
                             List list125 =
                                 json.decode((snapshot.data as Response).body);
                             return BlocBuilder<ListCubitCubit, ListCubitState>(
@@ -121,12 +122,29 @@ class _InpatientState extends State<Inpatient> {
                               builder: (context, state) {
                                 print(state.dropdownChoice1);
                                 List<DropdownMenuItem<String>> list123 = [];
-                                for (int i = 0; i < list125.length; i++) {
+                                /*for (int i = 0; i < list125.length; i++) {
                                   if (list125[i]['postId'].toString() ==
                                       state.dropdownChoice1) {
                                         print(list125[i]['postId'].toString());
                                     list123.add(DropdownMenuItem(value: list125[i]['id'].toString(),
                                         child: Text(list125[i]['body'])));
+                                  }
+                                }*/
+                                int rightPosition = binary_search(
+                                    int.parse(state.dropdownChoice1),
+                                    'postId',
+                                    list125);
+                                //print('good');
+                                if (list125[rightPosition]['postId'] ==
+                                    state.dropdownChoice1) {
+                                  while (list125[rightPosition]['postId'] ==
+                                      state.dropdownChoice1) {
+                                    list123.add(DropdownMenuItem(
+                                        value: list125[rightPosition]['id']
+                                            .toString(),
+                                        child: Text(
+                                            list125[rightPosition]['body'])));
+                                    rightPosition++;
                                   }
                                 }
                                 return customDropDownButtom1 =
@@ -144,18 +162,15 @@ class _InpatientState extends State<Inpatient> {
                           }
                         })),
                     Text('Day you come ${customDropDownButtom2.state.value}',
-                        style: TextStyle(fontSize: 30)),
+                        style: TextStyle(fontSize: 20)),
                     Container(
                         decoration: BoxDecoration(shape: BoxShape.rectangle),
                         child: ElevatedButton(
                             onPressed: () => null, child: Text("Submit")))
                   ],
                 ),
-              ),
-            ),
-            decoration: BoxDecoration(
-                color: CustomeColor.MainScreenButtomColorFirst,
-                shape: BoxShape.rectangle)),
+              )),
+        ),
       ),
     );
   }
@@ -193,10 +208,10 @@ class _CustomDropDownButtomState extends State<CustomDropDownButtom> {
         ? Container()
         : DropdownButton<String>(
             isExpanded: true,
-            focusColor: Colors.grey,
+            focusColor: Color.fromARGB(255, 11, 144, 238),
             alignment: AlignmentDirectional.center,
             underline: Container(),
-            dropdownColor: Colors.grey,
+            dropdownColor: Color.fromARGB(255, 8, 141, 158),
             value: this.value,
             items: items,
             onChanged: (value) {
