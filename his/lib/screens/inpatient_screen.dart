@@ -25,23 +25,23 @@ class TakeRegister extends StatefulWidget {
   }
 }
 
-class _TakeRegisterState extends State<TakeRegister> {
-  Future<DateTime?> _selecttime(List<int> list) {
-    DateTime rightDate = DateTime.now();
-    int day = 0;
-    while ([rightDate.weekday].toSet().intersection(list.toSet()).length == 0) {
-      day++;
-    }
-    return showDatePicker(
-        selectableDayPredicate: (day) {
-          return [day.weekday].toSet().intersection(list.toSet()).length != 0;
-        },
-        context: context,
-        firstDate: DateTime.now(),
-        initialDate: DateTime.now(),
-        lastDate: DateTime(2090));
+Future<DateTime?> _selecttime(BuildContext context, List<int> list) async {
+  DateTime rightDate = DateTime.now();
+  while ([rightDate.weekday].toSet().intersection(list.toSet()).length == 0) {
+    rightDate = rightDate.add(Duration(days: 1));
+    print('jjkkkkkkk');
   }
+  return showDatePicker(
+      selectableDayPredicate: (day) {
+       return [day.weekday].toSet().intersection(list.toSet()).length >= 1;
+      },
+      context: context,
+      firstDate: DateTime.now(),
+      initialDate: rightDate,
+      lastDate: DateTime(2090));
+}
 
+class _TakeRegisterState extends State<TakeRegister> {
   _TakeRegisterState() {}
   CustomDropDownButtom customDropDownButtom1 = CustomDropDownButtom(
     f: () => null,
@@ -192,7 +192,6 @@ class _TakeRegisterState extends State<TakeRegister> {
                             switch (state.dropdownChoice3.length) {
                               case 0:
                                 return Container();
-                                break;
                               default:
                                 return Text('${state.dropdownChoice3}');
                             }
@@ -208,10 +207,12 @@ class _TakeRegisterState extends State<TakeRegister> {
                             overlayColor: MaterialStateProperty.resolveWith(
                                 (states) => Colors.blue)),
                         onPressed: () async {
-                          DateTime? day = await _selecttime([1,2,3]);
-                          if (day.runtimeType == null) {
-                            return;
+                          DateTime? day = await _selecttime(context, [1, 2, 3]);
+                          print('kkiiooo6789000000776\n');
+                          if (day.runtimeType == Null) {
+                            print('kkkii8888996666\n');
                           }
+                          print(day.runtimeType);
                           String date;
                           date = day!.day.toString() +
                               '/' +
