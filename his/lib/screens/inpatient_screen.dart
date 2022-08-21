@@ -112,7 +112,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                         builder: ((context, snapshot) {
                           if (snapshot.connectionState ==
                                   ConnectionState.done &&
-                              snapshot.error is String) {
+                              snapshot.data is Response) {
                             print(snapshot.error);
                             List list125 =
                                 json.decode((snapshot.data as Response).body);
@@ -136,7 +136,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                                     int.parse(state.dropdownChoice1),
                                     'postId',
                                     list125);
-                                //print('good');
+                                 print(list125[rightPosition]);
                                 if (list125[rightPosition]['postId'].toString() ==
                                     state.dropdownChoice1) {
                                   while (list125[rightPosition]['postId'].toString() ==
@@ -183,7 +183,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                       },
                     ),
                     Builder(builder: (context) {
-                      return TextButton(
+                      return TextButton(style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith((states) => Colors.blue) ,overlayColor:MaterialStateProperty.resolveWith((states) => Colors.blue) ),
                         onPressed: () async {
                           DateTime? day = await showDatePicker(
                               context: context,
@@ -202,9 +202,9 @@ class _TakeRegisterState extends State<TakeRegister> {
                           BlocProvider.of<ListCubitCubit>(context)
                               .update3(l: date);
                         },
-                        child: Text(
+                        child: Text( 
                             'Day you come ${customDropDownButtom2.state.value}',
-                            style: TextStyle(fontSize: 20)),
+                            style: TextStyle(color: Colors.white,fontSize: 20)),
                       );
                     }),
                     Container(
