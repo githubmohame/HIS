@@ -26,6 +26,17 @@ class TakeRegister extends StatefulWidget {
 }
 
 class _TakeRegisterState extends State<TakeRegister> {
+  Future<DateTime?> _selecttime(List<int> list) {
+    return showDatePicker(
+        selectableDayPredicate: (day) {
+          return [day].toSet().intersection(list.toSet()).length!=0;
+        },
+        context: context,
+        firstDate: DateTime.now(),
+        initialDate: DateTime.now(),
+        lastDate: DateTime(2090));
+  }
+
   _TakeRegisterState() {}
   CustomDropDownButtom customDropDownButtom1 = CustomDropDownButtom(
     f: () => null,
@@ -192,11 +203,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                             overlayColor: MaterialStateProperty.resolveWith(
                                 (states) => Colors.blue)),
                         onPressed: () async {
-                          DateTime? day = await showDatePicker(
-                              context: context,
-                              firstDate: DateTime.now(),
-                              initialDate: DateTime.now(),
-                              lastDate: DateTime(2090));
+                          DateTime? day = await _selecttime();
                           if (day.runtimeType == null) {
                             return;
                           }
