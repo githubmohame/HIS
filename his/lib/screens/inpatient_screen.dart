@@ -136,10 +136,12 @@ class _TakeRegisterState extends State<TakeRegister> {
                                     int.parse(state.dropdownChoice1),
                                     'postId',
                                     list125);
-                                 print(list125[rightPosition]);
-                                if (list125[rightPosition]['postId'].toString() ==
+                                print(list125[rightPosition]);
+                                if (list125[rightPosition]['postId']
+                                        .toString() ==
                                     state.dropdownChoice1) {
-                                  while (list125[rightPosition]['postId'].toString() ==
+                                  while (list125[rightPosition]['postId']
+                                          .toString() ==
                                       state.dropdownChoice1) {
                                     list123.add(DropdownMenuItem(
                                         value: list125[rightPosition]['id']
@@ -170,6 +172,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                               previous.dropdownChoice3 !=
                               current.dropdownChoice3,
                           builder: (context, state) {
+                            print('rebuild');
                             switch (state.dropdownChoice3.length) {
                               case 0:
                                 return Container();
@@ -177,13 +180,17 @@ class _TakeRegisterState extends State<TakeRegister> {
                               default:
                                 return Text('${state.dropdownChoice3}');
                             }
-                            
                           },
                         );
                       },
                     ),
                     Builder(builder: (context) {
-                      return TextButton(style:ButtonStyle(backgroundColor:MaterialStateProperty.resolveWith((states) => Colors.blue) ,overlayColor:MaterialStateProperty.resolveWith((states) => Colors.blue) ),
+                      return TextButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith(
+                                (states) => Colors.blue),
+                            overlayColor: MaterialStateProperty.resolveWith(
+                                (states) => Colors.blue)),
                         onPressed: () async {
                           DateTime? day = await showDatePicker(
                               context: context,
@@ -202,9 +209,10 @@ class _TakeRegisterState extends State<TakeRegister> {
                           BlocProvider.of<ListCubitCubit>(context)
                               .update3(l: date);
                         },
-                        child: Text( 
+                        child: Text(
                             'Day you come ${customDropDownButtom2.state.value}',
-                            style: TextStyle(color: Colors.white,fontSize: 20)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20)),
                       );
                     }),
                     Container(
