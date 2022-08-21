@@ -27,9 +27,14 @@ class TakeRegister extends StatefulWidget {
 
 class _TakeRegisterState extends State<TakeRegister> {
   Future<DateTime?> _selecttime(List<int> list) {
+    DateTime rightDate = DateTime.now();
+    int day = 0;
+    while ([rightDate.weekday].toSet().intersection(list.toSet()).length == 0) {
+      day++;
+    }
     return showDatePicker(
         selectableDayPredicate: (day) {
-          return [day].toSet().intersection(list.toSet()).length!=0;
+          return [day.weekday].toSet().intersection(list.toSet()).length != 0;
         },
         context: context,
         firstDate: DateTime.now(),
@@ -203,7 +208,7 @@ class _TakeRegisterState extends State<TakeRegister> {
                             overlayColor: MaterialStateProperty.resolveWith(
                                 (states) => Colors.blue)),
                         onPressed: () async {
-                          DateTime? day = await _selecttime();
+                          DateTime? day = await _selecttime([1,2,3]);
                           if (day.runtimeType == null) {
                             return;
                           }
