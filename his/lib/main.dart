@@ -28,5 +28,5 @@ void main() {
     },
   ));
   //runApp(MaterialApp(home: Inpatient()));*/
-  runApp(MyApp());
+  runApp(MaterialApp(home: TakeRegister(),) );
 }

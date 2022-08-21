@@ -58,30 +58,31 @@ class _TakeRegisterState extends State<TakeRegister> {
         ),
         body: Center(
           child: Container(
-             padding: EdgeInsets.only(top: 50, bottom: 50),
-                width: 700,
-                height: 700,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        30,
-                      ),
+              padding: EdgeInsets.only(top: 50, bottom: 50),
+              width: 700,
+              height: 700,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      30,
                     ),
-                    border: Border.all(width: 5, color: Colors.black)),
+                  ),
+                  border: Border.all(width: 5, color: Colors.black)),
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Center(
-                      child: Text('Take Time',
-                          style: TextStyle(fontSize: 20)),
+                      child: Text('Take Time', style: TextStyle(fontSize: 20)),
                     ),
-                    Text('Specification', style: TextStyle(fontSize:20)),
+                    Text('Specification', style: TextStyle(fontSize: 20)),
                     FutureBuilder(
                         future: fsm(),
                         builder: ((context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.done&&snapshot.data is Response) {
+                          if (snapshot.connectionState ==
+                                  ConnectionState.done &&
+                              snapshot.data is Response) {
                             List list125 =
                                 json.decode((snapshot.data as Response).body);
                             List<DropdownMenuItem<String>> list123 =
@@ -109,7 +110,8 @@ class _TakeRegisterState extends State<TakeRegister> {
                     FutureBuilder(
                         future: fsm2(),
                         builder: ((context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.done &&
+                          if (snapshot.connectionState ==
+                                  ConnectionState.done &&
                               snapshot.error is String) {
                             print(snapshot.error);
                             List list125 =
@@ -135,9 +137,9 @@ class _TakeRegisterState extends State<TakeRegister> {
                                     'postId',
                                     list125);
                                 //print('good');
-                                if (list125[rightPosition]['postId'] ==
+                                if (list125[rightPosition]['postId'].toString() ==
                                     state.dropdownChoice1) {
-                                  while (list125[rightPosition]['postId'] ==
+                                  while (list125[rightPosition]['postId'].toString() ==
                                       state.dropdownChoice1) {
                                     list123.add(DropdownMenuItem(
                                         value: list125[rightPosition]['id']
@@ -161,8 +163,50 @@ class _TakeRegisterState extends State<TakeRegister> {
                             return Container();
                           }
                         })),
-                    Text('Day you come ${customDropDownButtom2.state.value}',
-                        style: TextStyle(fontSize: 20)),
+                    Builder(
+                      builder: (context) {
+                        return BlocBuilder<ListCubitCubit, ListCubitState>(
+                          buildWhen: (previous, current) =>
+                              previous.dropdownChoice3 !=
+                              current.dropdownChoice3,
+                          builder: (context, state) {
+                            switch (state.dropdownChoice3.length) {
+                              case 0:
+                                return Container();
+                                break;
+                              default:
+                                return Text('${state.dropdownChoice3}');
+                            }
+                            
+                          },
+                        );
+                      },
+                    ),
+                    Builder(builder: (context) {
+                      return TextButton(
+                        onPressed: () async {
+                          DateTime? day = await showDatePicker(
+                              context: context,
+                              firstDate: DateTime.now(),
+                              initialDate: DateTime.now(),
+                              lastDate: DateTime(2090));
+                          if (day.runtimeType == null) {
+                            return;
+                          }
+                          String date;
+                          date = day!.day.toString() +
+                              '/' +
+                              day.month.toString() +
+                              "/" +
+                              day.year.toString();
+                          BlocProvider.of<ListCubitCubit>(context)
+                              .update3(l: date);
+                        },
+                        child: Text(
+                            'Day you come ${customDropDownButtom2.state.value}',
+                            style: TextStyle(fontSize: 20)),
+                      );
+                    }),
                     Container(
                         decoration: BoxDecoration(shape: BoxShape.rectangle),
                         child: ElevatedButton(
