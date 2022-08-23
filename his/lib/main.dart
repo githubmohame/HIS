@@ -9,7 +9,7 @@ import 'package:his/screens/upload_medical_image.dart';
 
 import 'screens/SignIn.dart';
 import 'screens/doctors_screen.dart';
-import 'screens/inpatient_screen.dart';
+import 'screens/appointment.dart';
 import 'screens/patient_info_screen.dart';
 
 void main() {
