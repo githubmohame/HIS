@@ -97,7 +97,7 @@ class MainScreen extends StatelessWidget {
                 )) ,
                 Expanded(
                     child: CustomeButtom(
-                  function: '',
+                  function:  "PatientDocumentsView",
                   color: CustomeColor.MainScreenButtomColorFirst,
                   text: Text('Ptient\n Documents',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(

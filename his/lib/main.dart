@@ -13,7 +13,7 @@ import 'screens/inpatient_screen.dart';
 import 'screens/patient_info_screen.dart';
 
 void main() {
-  /*
+   
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
@@ -25,8 +25,9 @@ void main() {
       "SignIn": (p0) => SignIn(),
       "UploadImageMedical": (p0) => UploadImageMedical(),
       "InpatientScreen": (p0) => TakeRegister(),"AdminMainScreen": (p0) => AdminMainScreen(),
+      "PatientDocumentsView":(p0)=>PatientDocumentsView()
     },
   ));
   //runApp(MaterialApp(home: Inpatient()));*/
-  runApp(MaterialApp(home: TakeRegister(),) );
+  //runApp(MaterialApp(home: TakeRegister(),) );
 }
