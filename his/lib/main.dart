@@ -11,10 +11,11 @@ import 'screens/SignIn.dart';
 import 'screens/doctors_screen.dart';
 import 'screens/appointment.dart';
 import 'screens/patient_info_screen.dart';
+import 'screens/take_job_screen.dart';
 
 void main() {
    
-  runApp(MaterialApp(
+ /* runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: <String, Widget Function(BuildContext)>{
@@ -27,7 +28,7 @@ void main() {
       "InpatientScreen": (p0) => TakeRegister(),"AdminMainScreen": (p0) => AdminMainScreen(),
       "PatientDocumentsView":(p0)=>PatientDocumentsView()
     },
-  ));
-  //runApp(MaterialApp(home: Inpatient()));*/
+  ));*/
+  runApp(ApplyToJobScreen());
   //runApp(MaterialApp(home: TakeRegister(),) );
 }

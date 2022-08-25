@@ -1,5 +1,7 @@
 //import 'dart:html' as html;
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -29,13 +31,19 @@ class _PatientDocumentsViewState extends State<PatientDocumentsView> {
               height: 20,
             );
           }
-          return Container(decoration: BoxDecoration(border:Border.all(color: Colors.grey,width:2) ,borderRadius: BorderRadius.all(Radius.circular(20))),
+          return Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(20))),
             child: GestureDetector(
                 child: Row(
                   children: [
-                    Container(height:60,width:60,
+                    Container(
+                      height: 60,
+                      width: 60,
                       child: Image(
-                        image: NetworkImage('https://images.unsplash.com/photo-1616012480717-fd9867059ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80'),
+                        image: NetworkImage(
+                            'https://images.unsplash.com/photo-1616012480717-fd9867059ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80'),
                       ),
                     ),
                     Expanded(child: Text('info of images'))
@@ -45,8 +53,9 @@ class _PatientDocumentsViewState extends State<PatientDocumentsView> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => PaitentDocumentation(
-                            url:
-                                'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',),
+                          url:
+                              'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+                        ),
                       ),
                     )),
           );
@@ -66,14 +75,15 @@ class PaitentDocumentation extends StatefulWidget {
     return state = _PatientDocumentsState(url: state.url);
   }
 }
+
 class _PatientDocumentsState extends State<PaitentDocumentation> {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   String url;
   @override
   void dispose() {
-
-     super.dispose();
+    super.dispose();
   }
+
   @override
   void initState() {
     super.initState();
@@ -82,7 +92,8 @@ class _PatientDocumentsState extends State<PaitentDocumentation> {
   _PatientDocumentsState({required String url}) : url = url {}
   @override
   Widget build(BuildContext context) {
-    return SfPdfViewer.network(this.url
+    return SfPdfViewer.network(
+      this.url
       //'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
       ,
       key: _pdfViewerKey,
