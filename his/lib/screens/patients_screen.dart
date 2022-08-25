@@ -27,6 +27,7 @@ class _PatientScreenState extends State<PatientScreen> {
           itemBuilder: (context, index) {
             return GestureDetector(onTap:()=>Navigator.push( context,MaterialPageRoute(builder: (context) =>  PatientInfoScreen(Phone: '0998876544',Adress: 'looo',FullName: 'oooooo',))),
               child: Container(
+                width:double.infinity,
                 height: 150,
                 padding: EdgeInsets.only(top: 10, bottom: 10),
                 decoration: BoxDecoration(

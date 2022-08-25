@@ -11,12 +11,26 @@ class Registeration extends StatefulWidget {
 }
 
 class _RegisterationState extends State<Registeration> {
-  final _formKey = GlobalKey<FormState>();
   List<TextEditingController> controller =
-      List.generate(4, (index) => TextEditingController());
+      List.generate(5, (index) => TextEditingController());
+  @override
+  void dispose() {
+    this.controller.forEach((element) {
+      element.dispose();
+    });
+    print('Dispose used');
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(leading: GestureDetector(onTap: ()=>Navigator.pop(context),child: Icon(Icons.arrow_back,color:Colors.black)),backgroundColor: CustomeColor.silver,),
+    return Scaffold(
+      appBar: AppBar(
+        leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Icon(Icons.arrow_back, color: Colors.black)),
+        backgroundColor: CustomeColor.silver,
+      ),
       body: Container(
           child: Center(
             child: Container(
@@ -93,8 +107,8 @@ class _RegisterationState extends State<Registeration> {
                           hintText: 'Enter Your Address',
                           border: InputBorder.none),
                     ),
-                    
-                  ),Container(
+                  ),
+                  Container(
                     width: 500,
                     padding: EdgeInsets.only(left: 50),
                     decoration: BoxDecoration(
@@ -103,7 +117,7 @@ class _RegisterationState extends State<Registeration> {
                     child: TextFormField(
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
-                      controller: controller[3],
+                      controller: controller[4],
                       decoration: InputDecoration(
                           hintText: 'Enter Your Email',
                           border: InputBorder.none),
@@ -136,50 +150,99 @@ class CustomePaswwordEntry extends StatefulWidget {
 
 class _CustomePaswwordEntryState extends State<CustomePaswwordEntry> {
   TextEditingController textEditingController = TextEditingController();
+    TextEditingController textEditingController2 = TextEditingController();
+
   bool show = false;
   @override
+  void dispose() {
+     textEditingController.dispose();
+     textEditingController2.dispose();
+     super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        show?Container(
-          width: 500,
-          padding: EdgeInsets.only(left: 50),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30), color: Colors.grey),
-          child: TextFormField(
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            controller: textEditingController,
-            decoration: InputDecoration(
-                hintText: 'Enter Your PASSWORD', border: InputBorder.none),
-          ),
-        ):
-        Container(
-          width: 500,
-          padding: EdgeInsets.only(left: 50),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30), color: Colors.grey),
-          child: TextFormField(
-            obscureText: true,
-            obscuringCharacter: '*',
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            controller: textEditingController,
-            decoration: InputDecoration(
-                hintText: 'Enter Your PASSWORD', border: InputBorder.none),
-          ),
-        )
-        ,
-        Row(mainAxisAlignment: MainAxisAlignment.center,
+         show
+            ? Container(
+                width: 500,
+                padding: EdgeInsets.only(left: 50),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.grey),
+                child: TextFormField(
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  controller: textEditingController,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Your PASSWORD',
+                      border: InputBorder.none),
+                ),
+              )
+            : Container(
+                width: 500,
+                padding: EdgeInsets.only(left: 50),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.grey),
+                child: TextFormField(
+                  obscureText: true,
+                  obscuringCharacter: '*',
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  controller: textEditingController,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Your PASSWORD',
+                      border: InputBorder.none),
+                ),
+              ),
+              SizedBox(height:20),
+        show
+            ? Container(
+                width: 500,
+                padding: EdgeInsets.only(left: 50),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.grey),
+                child: TextFormField(
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  controller: textEditingController2,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Your Confirmation PASSWORD',
+                      border: InputBorder.none),
+                ),
+              )
+            : Container(
+                width: 500,
+                padding: EdgeInsets.only(left: 50),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.grey),
+                child: TextFormField(
+                  obscureText: true,
+                  obscuringCharacter: '*',
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  controller: textEditingController2,
+                  decoration: InputDecoration(
+                      hintText: 'Enter Your PASSWORD Confirmation',
+                      border: InputBorder.none),
+                ),
+              ),
+       
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Checkbox(
                 value: show,
                 onChanged: (b) {
                   setState(() {
-                    show = b is bool?b:!show;
+                    show = b is bool ? b : !show;
                   });
                 }),
-                Text("show password")
+            Text("show password")
           ],
         )
       ],

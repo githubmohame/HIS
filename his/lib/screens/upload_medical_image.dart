@@ -30,8 +30,10 @@ class _UploadImageMedicalState extends State<UploadImageMedical> {
         ImageLast = Image.file(File(image.path));
       }
 
-      controller = Container( 
-        child: ImageLast,
+      controller = Expanded(
+        child: Container(width: double.infinity,
+          child: ImageLast,
+        ),
       );
       setState(() {
         print(controller);
@@ -50,6 +52,10 @@ class _UploadImageMedicalState extends State<UploadImageMedical> {
       );
       setState(() {});
     }
+  }
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   Widget build(BuildContext context) {

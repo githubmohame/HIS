@@ -35,9 +35,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   children: [
                     Stack(alignment: Alignment.center, children: [
                       CircularProgressIndicator(),
-                      Container(width: 100,height:100,decoration: BoxDecoration(shape: BoxShape.circle,image:DecorationImage(image: NetworkImage(
-                          'https://i.pinimg.com/564x/99/7c/98/997c98690995eb77cb65cb88f39856b0.jpg'),fit: BoxFit.fill)),
-                  ),
+                      Image.network('https://www.norman-network.net/sites/default/files/images/122715793%20network.jpg')
+                      ,
                     ]),
                     Expanded(
                       child: Text(maxLines: 5,
