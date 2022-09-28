@@ -46,7 +46,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
             text: Text('Doctors',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
             image: Image(
               image: AssetImage(
-                'assets/icons/man.png',
+                'assets/asset_phone/icons/man.png',
               ),
             ),
             rightMargin: 8,
@@ -60,7 +60,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
             text: Text('Patient',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
             image: Image(
               image: AssetImage(
-                'assets/icons/patient.png',
+                'assets/asset_phone/icons/patient.png',
               ),
             ),
             rightMargin: 8,

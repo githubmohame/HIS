@@ -50,7 +50,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               shadowColor: Colors.transparent,
               bottomOpacity: 0,
               foregroundColor: Colors.white,
-              surfaceTintColor: Colors.transparent,
+              surfaceTintColor: Colors.transparent, 
               leading: GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Icon(Icons.arrow_back, color: Colors.black)),
@@ -82,7 +82,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       children: [
                         Container(height: 200,width:200,
                           child: SvgPicture.asset(
-                              'assets/icons/hospital-svgrepo-com.svg',
+                              'assets/asset_phone/icons/hospital-svgrepo-com.svg',
                               fit: BoxFit.cover),
                         ),
                       Text('HIS', style: TextStyle(fontSize: 30)),
@@ -121,19 +121,5 @@ Route _createRoute() {
   );
 }
 
-/*class MyRoute extends MaterialPageRoute {
-  MyRoute({required super.builder});
-  @override
-  Duration get transitionDuration => Duration(seconds: 10);
-}
-
-class CustomPageRoute extends PageRouteBuilder {
-  CustomPageRoute( ):super(transitionsBuilder: ,pageBuilder:(BuildContext, Animation , Animation2 ) =>MainScreen()
-  )
-  ;
-
-  @override
-  // TODO: implement transitionDuration
-  Duration get transitionDuration => throw UnimplementedError();
-}
-*/
+ 
+ 

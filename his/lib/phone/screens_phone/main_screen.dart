@@ -52,7 +52,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Registration',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/user.png',
+                      'assets/asset_phone/icons/user.png',
                     ),
                   ),
                   topMargin: 10,
@@ -70,7 +70,7 @@ class MainScreen extends StatelessWidget {
                     text: Text('WebSite',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                     image: Image(
                       image: AssetImage(
-                        'assets/icons/web.png',
+                        'assets/asset_phone/icons/web.png',
                       ),
                     ),
                     rightMargin: 8,
@@ -86,7 +86,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('SignIn',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/user.png',
+                      'assets/asset_phone/icons/user.png',
                     ),
                   ),
                   topMargin: 10,
@@ -108,7 +108,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Doctors',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/man.png',
+                      'assets/asset_phone/icons/man.png',
                     ),
                   ),
                   rightMargin: 8,
@@ -123,7 +123,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Apply To Job',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/portfolio.png',
+                      'assets/asset_phone/icons/portfolio.png',
                     ),
                   ),
                   rightMargin: 8,
@@ -138,7 +138,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Ptient\n Documents',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/medical-history.png',
+                      'assets/asset_phone/icons/medical-history.png',
                     ),
                   ),
                   leftMargin: 8,
@@ -169,7 +169,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Radiology\n upload',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/upload.png',
+                      'assets/asset_phone/icons/upload.png',
                     ),
                   ),
                   rightMargin: 8,
@@ -184,7 +184,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Radiology\nResults'),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/x-ray.png',
+                      'assets/asset_phone/icons/x-ray.png',
                     ),
                   ),
                   leftMargin: 8,
@@ -205,7 +205,7 @@ class MainScreen extends StatelessWidget {
                   text: Text('Admin',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
-                      'assets/icons/userAdmin.png',
+                      'assets/asset_phone/icons/userAdmin.png',
                     ),
                   ),
                   rightMargin: 8,
