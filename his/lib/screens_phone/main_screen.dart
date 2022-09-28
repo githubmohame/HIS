@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:his/models/main_user_model.dart';
-import 'package:his/themes/colors.dart';
+import 'package:his/phone/themes/colors.dart';
 import 'package:url_launcher/link.dart';
 
 class MainScreen extends StatelessWidget {
@@ -11,11 +11,32 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, 100),
-        child: AppBar(
-            leading: null,
-            title: Center(
-                child: Text('HIS', style: TextStyle(color: Colors.black))),
-            backgroundColor: CustomeColor.silver),
+        child: PreferredSize(
+          preferredSize: Size(double.infinity, 50),
+          child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: AlignmentDirectional.topStart,
+                    end: AlignmentDirectional.bottomEnd,
+                    colors: [
+                  Color.fromARGB(255, 128, 187, 236),
+                  Color.fromARGB(255, 249, 246, 246)
+                ])),
+            child: AppBar(
+              shadowColor: Colors.transparent,
+              bottomOpacity: 0,
+              foregroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+              title: Center(
+                child: Text('HIS', style: TextStyle(fontSize: 30)),
+              ),
+              leading: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container()),
+              backgroundColor: Colors.transparent,
+            ),
+          ),
+        ),
       ),
       body: SafeArea(
           child: Column(
@@ -97,9 +118,9 @@ class MainScreen extends StatelessWidget {
                 )) ,
                 Expanded(
                     child: CustomeButtom(
-                  function: 'Take Job',
+                  function: 'ApplyToJobScreen',
                   color: CustomeColor.silver,
-                  text: Text('Doctors',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  text: Text('Apply To Job',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/icons/portfolio.png',
@@ -170,7 +191,7 @@ class MainScreen extends StatelessWidget {
                   buttonMargin: 20,
                   rightMargin: 5,
                   topMargin: 3,
-                )),
+                )),  
               ],
             ),
           ),
@@ -190,37 +211,7 @@ class MainScreen extends StatelessWidget {
                   rightMargin: 8,
                   buttonMargin: 20,
                   offset: Offset(2, 2),
-                )),/*
-                Expanded(
-                    child: CustomeButtom(
-                  function: '',
-                  color: CustomeColor.silver,
-                  text: Text('Medical\nImages'),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/icons/Medical_Images.png',
-                    ),
-                  ),
-                  rightMargin: 8,
-                  topMargin: 8,
-                  buttonMargin: 20,
-                  offset: Offset(2, 2),
-                )),*//*
-                Expanded(
-                    child: CustomeButtom(
-                  function: '',
-                  color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Modalities\nSettings'),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/icons/setting.png',
-                    ),
-                  ),
-                  leftMargin: 8,
-                  rightMargin: 5,
-                  buttonMargin: 20,
-                  offset: Offset(-2, 2),
-                )),*/
+                )),
               ],
             ),
           ):Container(),
@@ -279,8 +270,13 @@ class CustomeButtom extends StatelessWidget {
             top: margin['topMargin']!),
         width: 100,
         decoration: BoxDecoration(
-            boxShadow: [BoxShadow(offset: offset, color: Colors.black45)],
-            color: color),
+              gradient: LinearGradient(
+                  begin: AlignmentDirectional.topStart,
+                  end: AlignmentDirectional.bottomEnd,
+                  colors: [
+                Color.fromARGB(255, 128, 187, 236),
+                Color.fromARGB(255, 249, 246, 246)
+              ])),
         child: Column(
           children: [image, text],
         ),
