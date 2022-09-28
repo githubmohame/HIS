@@ -9,6 +9,7 @@ class DoctorInfoScreen extends StatelessWidget {
   String email;
   String phone;
   String specified;
+  String url;
   List<TextEditingController> textEditingController = <TextEditingController>[
     TextEditingController(),
     TextEditingController(),
@@ -16,7 +17,8 @@ class DoctorInfoScreen extends StatelessWidget {
     TextEditingController()
   ];
   DoctorInfoScreen(
-      {required this.email,
+      {required this.url,
+      required this.email,
       required this.fullName,
       required this.phone,
       required this.specified}) {
@@ -54,7 +56,7 @@ class DoctorInfoScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: DoctorInfoPhone(
+        body: DoctorInfoPhone(url: url,
           email: email,
           fullName: fullName,
           phone: phone,
@@ -62,18 +64,20 @@ class DoctorInfoScreen extends StatelessWidget {
         ));
   }
 }
+
 class DoctorInfoPhone extends StatefulWidget {
   String fullName;
   String email;
   String phone;
   String specified;
+  String url;
   List<TextEditingController> textEditingController = <TextEditingController>[
     TextEditingController(),
     TextEditingController(),
     TextEditingController(),
     TextEditingController()
   ];
-  DoctorInfoPhone({
+  DoctorInfoPhone({required this.url,
     Key? key,
     required this.fullName,
     required this.email,
@@ -108,7 +112,8 @@ class _DoctorInfoPhoneState extends State<DoctorInfoPhone> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: [Container(height: 100,width:100,child:Image(height: 100,width:100,image:NetworkImage(widget.url)),)
+              ,
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

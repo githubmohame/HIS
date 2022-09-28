@@ -1,18 +1,19 @@
 
 
+ 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:his/phone/screens_phone/SignIn.dart';
-import 'package:his/phone/screens_phone/appointment.dart';
-import 'package:his/phone/screens_phone/doctors_screen.dart';
-import 'package:his/phone/screens_phone/introduction_animation.dart';
-import 'package:his/phone/screens_phone/main_admin_screen.dart';
-import 'package:his/phone/screens_phone/main_screen.dart';
-import 'package:his/phone/screens_phone/patient_documentation.dart';
-import 'package:his/phone/screens_phone/patients_screen.dart';
-import 'package:his/phone/screens_phone/registeration.dart';
-import 'package:his/phone/screens_phone/take_job_screen.dart';
-import 'package:his/phone/screens_phone/upload_medical_image.dart';
+import 'package:his/phone_round0/screens_phone/SignIn.dart';
+import 'package:his/phone_round0/screens_phone/appointment.dart';
+import 'package:his/phone_round0/screens_phone/doctors_screen.dart';
+import 'package:his/phone_round0/screens_phone/introduction_animation.dart';
+import 'package:his/phone_round0/screens_phone/main_admin_screen.dart';
+import 'package:his/phone_round0/screens_phone/main_screen.dart';
+import 'package:his/phone_round0/screens_phone/patient_documentation.dart';
+import 'package:his/phone_round0/screens_phone/patients_screen.dart';
+import 'package:his/phone_round0/screens_phone/registeration.dart';
+import 'package:his/phone_round0/screens_phone/take_job_screen.dart';
+import 'package:his/phone_round0/screens_phone/upload_medical_image.dart';
 
 void main() {
    

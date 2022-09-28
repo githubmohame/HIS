@@ -7,10 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:his/main.dart';
-import 'package:his/phone/screens_phone/main_screen.dart';
-
+import 'package:his/phone_round0/screens_phone/main_screen.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.

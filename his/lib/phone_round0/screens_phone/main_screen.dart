@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:his/models/main_user_model.dart';
-import 'package:his/phone/themes/colors.dart';
 import 'package:url_launcher/link.dart';
+
+import '../themes/colors.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -61,25 +62,6 @@ class MainScreen extends StatelessWidget {
                   offset: Offset(2, 2),
                 )),
                 Expanded(
-                    child: Link(
-                  uri: Uri.parse(
-                      'https://www.google.com/search?q=+css+registerbeautiful+forums&tbm=isch&ved=2ahUKEwidsY69ucn5AhUChxoKHZcaBz8Q2-cCegQIABAA&oq=+css+registerbeautiful+forums&gs_lcp=CgNpbWcQAzoECCMQJ1AAWI4MYPMOaABwAHgAgAGdAYgBkgWSAQMwLjWYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=2Iz6Yp3lIoKOape1nPgD&bih=900&biw=960&client=firefox-b-d'),
-                  builder: (context, followLink) => CustomeButtom(
-                    function: followLink,
-                    color: CustomeColor.silver,
-                    text: Text('WebSite',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
-                    image: Image(
-                      image: AssetImage(
-                        'assets/asset_phone/icons/web.png',
-                      ),
-                    ),
-                    rightMargin: 8,
-                    topMargin: 8,
-                    buttonMargin: 20,
-                    offset: Offset(2, 2),
-                  ),
-                )),
-                Expanded(
                     child: CustomeButtom(
                   function: 'SignIn',
                   color: CustomeColor.MainScreenButtomColorFirst,
@@ -118,24 +100,9 @@ class MainScreen extends StatelessWidget {
                 )) ,
                 Expanded(
                     child: CustomeButtom(
-                  function: 'ApplyToJobScreen',
-                  color: CustomeColor.silver,
-                  text: Text('Apply To Job',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/asset_phone/icons/portfolio.png',
-                    ),
-                  ),
-                  rightMargin: 8,
-                  topMargin: 8,
-                  buttonMargin: 20,
-                  offset: Offset(2, 2),
-                )) ,
-                Expanded(
-                    child: CustomeButtom(
                   function:  "PatientDocumentsView",
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Ptient\n Documents',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  text: Text('Documents',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Image(
                     image: AssetImage(
                       'assets/asset_phone/icons/medical-history.png',
@@ -156,27 +123,13 @@ class MainScreen extends StatelessWidget {
                     child: CustomeButtom(
                   function:  "InpatientScreen",
                   color: CustomeColor.MainScreenButtomColorFirst,
-                  text: Text('Take Time',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  text: Text('Booking',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
                   image: Icon(Icons.punch_clock_sharp,size: 70),
                   rightMargin: 8,
                   buttonMargin: 20,
                   offset: Offset(2, 2),
                 )),
-                Expanded(
-                    child: CustomeButtom(
-                  function:"UploadImageMedical",
-                  color: CustomeColor.silver,
-                  text: Text('Radiology\n upload',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
-                  image: Image(
-                    image: AssetImage(
-                      'assets/asset_phone/icons/upload.png',
-                    ),
-                  ),
-                  rightMargin: 8,
-                  topMargin: 0,
-                  buttonMargin: 20,
-                  offset: Offset(2, 2),
-                )),
+               
                 Expanded(
                     child: CustomeButtom(
                   function: '',
@@ -195,6 +148,39 @@ class MainScreen extends StatelessWidget {
               ],
             ),
           ),
+          Expanded(child: Row(children: [
+             Expanded(
+                    child: CustomeButtom(
+                  function:"UploadImageMedical",
+                  color: CustomeColor.silver,
+                  text: Text('Radiology\n upload',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  image: Image(
+                    image: AssetImage(
+                      'assets/asset_phone/icons/upload.png',
+                    ),
+                  ),
+                  rightMargin: 8,
+                  topMargin: 0,
+                  buttonMargin: 20,
+                  offset: Offset(2, 2),
+                )),
+                Expanded(
+                    child: CustomeButtom(
+                  function: 'ApplyToJobScreen',
+                  color: CustomeColor.silver,
+                  text: Text('Apply To Job',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                  image: Image(
+                    image: AssetImage(
+                      'assets/asset_phone/icons/portfolio.png',
+                    ),
+                  ),
+                  rightMargin: 8,
+                  topMargin: 8,
+                  buttonMargin: 20,
+                  offset: Offset(2, 2),
+                )) ,
+
+          ],)),
           MainUserModel.admin?Expanded(
             child: Row(
               children: [

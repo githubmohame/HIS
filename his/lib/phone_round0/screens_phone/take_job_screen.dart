@@ -215,6 +215,35 @@ class CustomeDropDownButtonState extends State<CustomeDropDownButton> {
                           borderRadius: BorderRadius.circular(10)),child: customeDropDownButton1),
                   ]),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                 Text('Country', style: TextStyle(fontSize: 20)),
+                Text('Country', style: TextStyle(fontSize: 20)),
+                Text('city', style: TextStyle(fontSize: 20)),
+              ],
+            ),
+            SizedBox(height:20),
+            Center(
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [Container(height:50 ,decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 2),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10)),child: TextField(decoration: InputDecoration(border: InputBorder.none),enabled: true,),),
+                    Container(height:50, decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 2),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10)),child: TextField(decoration: InputDecoration(border: InputBorder.none),enabled: true,),),
+                    Container(decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 2),
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10)),height:50,width:300,child: TextField(enabled: true,decoration: InputDecoration(border: InputBorder.none),),)
+                  ]),
+            ),
             SizedBox(
               height: 20,
             ),
