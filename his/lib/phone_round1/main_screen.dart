@@ -8,7 +8,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( bottomNavigationBar: BottomNavigationBar(value:,items: [BottomNavigationBarItem(label:"",icon: Image.asset(height:20,width:20,"assets/assets_phone_round2/icons/person.png")),
+    return Scaffold( bottomNavigationBar: BottomNavigationBar(currentIndex:2,items: [BottomNavigationBarItem(label:"",icon: Image.asset(height:20,width:20,"assets/assets_phone_round2/icons/person.png")),
     BottomNavigationBarItem(label:"",icon: Icon(Icons.calendar_month_rounded)),
         BottomNavigationBarItem(label:"",icon: Icon(Icons.home))
 
